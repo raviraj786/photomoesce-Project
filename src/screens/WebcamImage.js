@@ -1,8 +1,9 @@
 import React, { useCallback, useRef, useState } from "react";
 import Webcam from "react-webcam";
 
-function WebcamImage() {
+function WebcamImage({hendlefileSelect}) {
   const [img, setImg] = useState(null);
+  console.log(img)
   
 
   

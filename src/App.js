@@ -1,5 +1,6 @@
 import React, { useState  } from "react";
 import "./App.css";
+import capture from "./screens/WebcamImage";
 import WebcamImage from "./screens/WebcamImage";
 
 
@@ -8,13 +9,15 @@ function App() {
   const [picture, setPicture] = useState(null);
 
   const takePicture = () => {
-    const openimg = WebcamImage;
+    const openimg = capture()
     console.log(setPicture(openimg))
   }
 
 
   const [name, setName] = useState('');
+  console.log(name)
   const [des, setDes] = useState('');
+  console.log(des)
 
 
   function handleFileSelect(event) {
@@ -32,9 +35,13 @@ function App() {
 
 
 
+
+
+
   function handleSubmit(event) {
     event.preventDefault();
     // handle form submission logic here
+    console.log('sumit')
   }
 
 
@@ -50,6 +57,9 @@ function App() {
     
       <div>
         <h3>Smile! Be a part of the BIG PICTURE</h3>
+
+
+
         {/* <WebcamImage/> */}
         <form onSubmit={handleSubmit}>
       <label htmlFor="file-input">take a camera:</label>
@@ -61,16 +71,15 @@ function App() {
         onChange={handleFileSelect}
       />
 
-<div>
-      <video id="camera" autoPlay></video>
-      <button onClick={takePicture}>Take Picture</button>
-      {picture && (
-        <div>
-          <img src={picture} alt="Camera" />
-          {/* <button onClick={sendMessage}>Send Message</button> */}
-        </div>
-      )}
-    </div>
+<div style={{alignSelf:'center'}}>
+  <WebcamImage 
+  onChange={handleFileSelect}
+  />
+</div>
+
+
+
+
 
 
 
@@ -94,7 +103,16 @@ function App() {
 
 
 
-     
+      <div>
+      <video id="camera" autoPlay></video>
+      <button onClick={takePicture}>Take Picture</button>
+      {picture && (
+        <div>
+          <img src={picture} alt="Camera" />
+          {/* <button onClick={sendMessage}>Send Message</button> */}
+        </div>
+      )}
+    </div>
 
 
 
